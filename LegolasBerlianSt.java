@@ -32,6 +32,51 @@ public class LegolasBerlian {
     	scanner.close();
 	}
 }
+for (int aliansiIndex = 0; aliansiIndex < aliansiKota.size(); aliansiIndex++) {
+
+            List<Integer> aliansiIni = aliansiKota.get(aliansiIndex);
+
+            for (int i = 0; i < aliansiIni.size(); i++) {
+
+                for (int j = i + 1; j < aliansiIni.size(); j++) {
+
+                    String key1 = aliansiIni.get(i) + "-" + aliansiIndex;
+
+                    String key2 = aliansiIni.get(j) + "-" + aliansiIndex;
+
+                    graphLink.putIfAbsent(key1, new ArrayList<>());
+
+                    graphLink.putIfAbsent(key2, new ArrayList<>());
+
+                    graphLink.get(key1).add(key2);
+
+                    graphLink.get(key2).add(key1);
+
+                }
+
+            }
+
+        }
+
+
+        for (int kotaNow = 0; kotaNow < nKota; kotaNow++) {
+
+            for (int aliansiIni : mapAliansi.getOrDefault(kotaNow, new ArrayList<>())) {
+
+                if (jalurHamiltonian(kotaNow, aliansiIni, nKota, mapAliansi, graphLink)) {
+
+                    return kotaNow;
+
+                }
+
+            }
+
+        }
+
+
+        return -1;
+
+}
 
 private static boolean jalurHamiltonian(int kotaAwal, int aliansiAwal, int nKota, Map<Integer, List<Integer>> mapAliansi, Map<String, List<String>> graph) {
 	Stack<Node> stack = new Stack<>();
