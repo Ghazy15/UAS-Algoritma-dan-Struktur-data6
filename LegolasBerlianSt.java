@@ -32,6 +32,19 @@ public class LegolasBerlian {
     	scanner.close();
 	}
 }
+private static int kotaAwalDanTiket(int nKota, int nAliansi, List<List<Integer>>aliansiKota) {
+         Map<Integer, List<Integer>> mapAliansi = new HashMap<>();
+	 Map<String, List<String>> graphLink = new HashMap<>();
+
+for (int aliansiIndex = 0; aliansiIndex < aliansiKota.size(); aliansiIndex++) {
+         List<Integer> aliansiIni = aliansiKota.get(aliansiIndex);
+
+for (int kotaNow : aliansiIni) {
+         mapAliansi.putIfAbsent(kotaNow, new ArrayList<>());
+         mapAliansi.get(kotaNow).add(aliansiIndex);
+     }
+}
+	
 for (int aliansiIndex = 0; aliansiIndex < aliansiKota.size(); aliansiIndex++) {
 
             List<Integer> aliansiIni = aliansiKota.get(aliansiIndex);
