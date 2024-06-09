@@ -130,3 +130,19 @@ private static boolean jalurHamiltonian(int kotaAwal, int aliansiAwal, int nKota
 	return false;
 }
 
+static class Node {
+    int kotaNow;
+    int aliansiIni;
+    Set<Integer> kotaThen;
+    List<Integer> link;
+
+    Node(int kotaNow, int aliansiIni, Set<Integer> kotaThen, List<Integer> link) {
+        this.kotaNow = kotaNow;
+        this.aliansiIni = aliansiIni;
+        this.kotaThen = kotaThen;
+        this.link = link;
+    }
+}
+
+
+
