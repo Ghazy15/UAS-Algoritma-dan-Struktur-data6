@@ -106,7 +106,7 @@ private static boolean jalurHamiltonian(int kotaAwal, int aliansiAwal, int nKota
         	return true;
     	}
 
-}
+
 	List<Integer> aliansiDaftar = mapAliansi.getOrDefault(kotaSt, new ArrayList<>());
     	for (int aliansiNext : aliansiDaftar) {
         	if (aliansiNext != aliansiSt || aliansiDaftar.size() == 1) {
