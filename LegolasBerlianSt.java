@@ -107,3 +107,26 @@ private static boolean jalurHamiltonian(int kotaAwal, int aliansiAwal, int nKota
     	}
 
 }
+	List<Integer> aliansiDaftar = mapAliansi.getOrDefault(kotaSt, new ArrayList<>());
+    	for (int aliansiNext : aliansiDaftar) {
+        	if (aliansiNext != aliansiSt || aliansiDaftar.size() == 1) {
+            	String kunci = kotaSt + "-" + aliansiNext;
+            	List<String> tetanggaDaftar = graph.getOrDefault(kunci, new ArrayList<>());
+            	for (String tetangga : tetanggaDaftar) {
+                	int tetanggaKota = Integer.parseInt(tetangga.split("-")[0]);
+                	int tetanggaAliansi = Integer.parseInt(tetangga.split("-")[1]);
+                	if (!kotaThen.contains(tetanggaKota)) {
+                    	Set<Integer> kotaNew = new HashSet<>(kotaThen);
+                    	kotaNew.add(tetanggaKota);
+                    	List<Integer> linkNew = new ArrayList<>(link);
+                    	linkNew.add(tetanggaKota);
+                    	stack.push(new Node(tetanggaKota, tetanggaAliansi, kotaNew, linkNew));
+                	}
+            	}
+        	}
+    	}
+	}
+
+	return false;
+}
+
